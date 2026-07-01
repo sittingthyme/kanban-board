@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
+
+@theme inline {
+  --color-surface: var(--theme-surface);
+  --color-surface-raised: var(--theme-surface-raised);
+  --color-surface-overlay: var(--theme-surface-overlay);
+  --color-surface-card: var(--theme-surface-card);
+  --color-border: var(--theme-border);
+  --color-border-subtle: var(--theme-border-subtle);
+  --color-text-primary: var(--theme-text-primary);
+  --color-text-secondary: var(--theme-text-secondary);
+  --color-text-muted: var(--theme-text-muted);
+  --color-accent: #0d9488;
+  --color-accent-hover: #0f766e;
+  --color-nav: var(--theme-nav);
+  --color-sidebar: var(--theme-sidebar);
+  --color-success: #22c55e;
+  --color-warning: #f97316;
+  --color-danger: #ef4444;
+  --color-overlay: var(--theme-overlay);
+  --color-ring: var(--theme-ring);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+.light {
+  --theme-surface: #eef1f6;
+  --theme-surface-raised: #ffffff;
+  --theme-surface-overlay: #f8fafc;
+  --theme-surface-card: #ffffff;
+  --theme-border: #e2e8f0;
+  --theme-border-subtle: #cbd5e1;
+  --theme-text-primary: #0f172a;
+  --theme-text-secondary: #475569;
+  --theme-text-muted: #94a3b8;
+  --theme-nav: #ffffff;
+  --theme-sidebar: #ffffff;
+  --theme-overlay: rgb(15 23 42 / 0.4);
+  --theme-ring: #0f172a;
+  --theme-grid: rgb(15 23 42 / 0.04);
+}
+
+.dark {
+  --theme-surface: #0c1220;
+  --theme-surface-raised: #141c2e;
+  --theme-surface-overlay: #1a2438;
+  --theme-surface-card: #1e293b;
+  --theme-border: #2a3548;
+  --theme-border-subtle: #334155;
+  --theme-text-primary: #f1f5f9;
+  --theme-text-secondary: #94a3b8;
+  --theme-text-muted: #64748b;
+  --theme-nav: #141c2e;
+  --theme-sidebar: #141c2e;
+  --theme-overlay: rgb(0 0 0 / 0.6);
+  --theme-ring: #f1f5f9;
+  --theme-grid: rgb(255 255 255 / 0.03);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    color-scheme: light dark;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+
+  .board-grid-bg {
+    background-color: var(--color-surface);
+    background-image:
+      linear-gradient(var(--theme-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--theme-grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
